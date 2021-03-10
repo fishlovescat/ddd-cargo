@@ -2,58 +2,58 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="cargo">
     <meta name="keywords" content="ddd,cargo">
     <meta name="author" content="Sayi">
     <title>Cargo Admin</title>
-    <link rel="stylesheet" href="css/cargo.css" />
+    <link rel="stylesheet" href="css/cargo.css"/>
     <script src="js/cargo.js"></script>
 </head>
 
 <body>
-    <header>
-    </header>
-    <div class="article">
-        <div id="toolbox">
-            <div class="header">
-                Cargo Management System
-            </div>
-            <input id="search" type="search" placeholder="输入发件人搜索" onchange="search()" />
-            <button class="tool" onclick="Javascript:location.href='booking.html'"
+<header>
+</header>
+<div class="article">
+    <div id="toolbox">
+        <div class="header">
+            Cargo Management System
+        </div>
+        <input id="search" type="search" placeholder="输入发件人搜索" onchange="search()"/>
+        <button class="tool" onclick="Javascript:location.href='booking.html'"
                 title="switch horizontal or vertial chart">
-                预订货物
-            </button>
-        </div>
-        <div id="main">
-            <!-- <div id="cargo">
-                <div>CARGO-NO-16193</div>
-                <div>1590000</div>
-                <div>香蕉、苹果和梨子</div>
-                <div>杭州 to 北京</div>
-                <div>
-                    <button class="button_small" onclick="Javascript:location.href='modifyphone.html?cargoId=1678'">
-                        修改发送人
-                    </button>
-                    <button class="button_small" onclick="Javascript:location.href='modifydelivery.html?cargoId=1678'">
-                        修改目的地
-                    </button>
-                    <button class="button_small" style="background-color: bisque"
-                        onclick="Javascript:location.href='event.html?cargoId=1678'">
-                        添加处理事件
-                    </button>
-                    <button class="button_small" style="background-color: bisque"
-                        onclick="Javascript:location.href='cargo.html?cargoId=1678'">
-                        追踪单号
-                    </button>
-                </div>
-            </div> -->
-
-        </div>
+            预订货物
+        </button>
     </div>
+    <div id="main">
+        <!-- <div id="cargo">
+            <div>CARGO-NO-16193</div>
+            <div>1590000</div>
+            <div>香蕉、苹果和梨子</div>
+            <div>杭州 to 北京</div>
+            <div>
+                <button class="button_small" onclick="Javascript:location.href='modifyphone.html?cargoId=1678'">
+                    修改发送人
+                </button>
+                <button class="button_small" onclick="Javascript:location.href='modifydelivery.html?cargoId=1678'">
+                    修改目的地
+                </button>
+                <button class="button_small" style="background-color: bisque"
+                    onclick="Javascript:location.href='event.html?cargoId=1678'">
+                    添加处理事件
+                </button>
+                <button class="button_small" style="background-color: bisque"
+                    onclick="Javascript:location.href='cargo.html?cargoId=1678'">
+                    追踪单号
+                </button>
+            </div>
+        </div> -->
 
-    <script type="text/javascript">
+    </div>
+</div>
+
+<script type="text/javascript">
         function getCargos(phone) {
             var xmlhttp = new XMLHttpRequest();
             var url = "/cargo" + (phone ? ("?phone=" + phone) : "");
@@ -104,6 +104,8 @@
             getCargos(value ? value.trim() : "");
         }
         getCargos("");
-    </script>
+
+
+</script>
 </body>
 </html>

@@ -1,11 +1,5 @@
 package com.deepoove.cargo.application.command.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-
 import com.deepoove.cargo.application.command.CargoCmdService;
 import com.deepoove.cargo.application.command.cmd.CargoBookCommand;
 import com.deepoove.cargo.application.command.cmd.CargoDeleteCommand;
@@ -21,18 +15,27 @@ import com.deepoove.cargo.domain.aggregate.handlingevent.HandlingEventRepository
 import com.deepoove.cargo.domain.service.CargoDomainService;
 import com.deepoove.cargo.infrastructure.rpc.salessystem.SalersService;
 import com.deepoove.cargo.shared.DomainEventPublisher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
 
 @Service
 public class CargoCmdServiceImpl implements CargoCmdService {
 
     @Autowired
     private CargoRepository cargoRepository;
+
     @Autowired
     private HandlingEventRepository handlingEventRepository;
+
     @Autowired
     private CargoDomainService cargoDomainService;
+
     @Autowired
     private SalersService salersService;
+
     @Autowired
     DomainEventPublisher domainEventPublisher;
 
@@ -50,15 +53,17 @@ public class CargoCmdServiceImpl implements CargoCmdService {
         int size = cargoRepository.sizeByCustomer(cargoBookCommand.getSenderPhone());
         EnterpriseSegment enterpriseSegment = salersService.deriveEnterpriseSegment(cargo);
         int sizeCargo = cargoRepository.sizeByEnterpriseSegment(enterpriseSegment);
-        
+
         if (!cargoDomainService.mayAccept(size, sizeCargo,
-                cargo)) { throw new IllegalArgumentException(
-                        cargoBookCommand.getSenderPhone() + " cannot book cargo, exceed the limit: "
-                                + CargoDomainService.MAX_CARGO_LIMIT); }
+                cargo)) {
+            throw new IllegalArgumentException(
+                    cargoBookCommand.getSenderPhone() + " cannot book cargo, exceed the limit: "
+                            + CargoDomainService.MAX_CARGO_LIMIT);
+        }
 
         // saveCargo
         cargoRepository.save(cargo);
-        
+
         // post domain event
         domainEventPublisher.publish(new CargoBookDomainEvent(cargo));
     }
@@ -95,5 +100,4 @@ public class CargoCmdServiceImpl implements CargoCmdService {
     public void deleteCargo(CargoDeleteCommand cmd) {
         cargoRepository.remove(cmd.getCargoId());
     }
-
 }

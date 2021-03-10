@@ -1,11 +1,10 @@
 package com.deepoove.cargo.infrastructure.db.mapper;
 
-import java.util.List;
-
+import com.deepoove.cargo.infrastructure.db.dataobject.CargoDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.deepoove.cargo.infrastructure.db.dataobject.CargoDO;
+import java.util.List;
 
 @Mapper
 public interface CargoMapper {
@@ -17,12 +16,10 @@ public interface CargoMapper {
     List<CargoDO> selectByCustomer(@Param("phone") String phone);
 
     void save(CargoDO cargoDO);
-    
+
     void update(CargoDO cargoDO);
 
     void remove(@Param("id") String id);
 
     int countByCustomer(@Param("phone") String phone);
-
-
 }

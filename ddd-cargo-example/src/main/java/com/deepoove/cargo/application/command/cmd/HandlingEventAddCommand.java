@@ -5,12 +5,14 @@ import java.util.Date;
 public class HandlingEventAddCommand {
 
     private String cargoId;
+
     /**
      * 0:receive 1:load 2:unload 3:end
      */
     private int eventType;
-    
+
     private Date datetime;
+
     private String scheduleId;
 
     public String getCargoId() {
@@ -44,5 +46,4 @@ public class HandlingEventAddCommand {
     public void setDatetime(Date datetime) {
         this.datetime = datetime;
     }
-
 }

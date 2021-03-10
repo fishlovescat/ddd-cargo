@@ -1,11 +1,10 @@
 package com.deepoove.cargo.infrastructure.rpc.salessystem;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.deepoove.cargo.domain.aggregate.cargo.Cargo;
 import com.deepoove.cargo.domain.aggregate.cargo.valueobject.EnterpriseSegment;
 import com.deepoove.cargo.infrastructure.rpc.salessystem.dataobject.UserDO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class SalersService {
@@ -25,5 +24,4 @@ public class SalersService {
     public boolean mayAccept(int cargoSize, Cargo cargo) {
         return this.adapter.mayAccept(cargoSize, cargo);
     }
-
 }

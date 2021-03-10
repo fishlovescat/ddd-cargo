@@ -5,26 +5,30 @@ import com.deepoove.cargo.domain.aggregate.cargo.valueobject.DeliverySpecificati
 public class Cargo {
 
     private String id;
+
     private String senderPhone;
+
     private String description;
+
     private DeliverySpecification delivery;
 
     public Cargo(String id) {
         this.id = id;
     }
 
-    public Cargo() {}
+    public Cargo() {
+    }
 
     /**
      * Factory method：预订新的货物
-     * 
+     *
      * @param senderPhone
      * @param description
      * @param delivery
      * @return
      */
     public static Cargo newCargo(String id, String senderPhone, String description,
-            DeliverySpecification delivery) {
+                                 DeliverySpecification delivery) {
         Cargo cargo = new Cargo(id);
         cargo.senderPhone = senderPhone;
         cargo.description = description;
@@ -54,13 +58,14 @@ public class Cargo {
 
     public void changeDelivery(String destinationLocationCode) {
         if (this.delivery
-                .getOriginLocationCode().equals(destinationLocationCode)) { throw new IllegalArgumentException(
-                        "destination and origin location cannot be the same."); }
+                .getOriginLocationCode().equals(destinationLocationCode)) {
+            throw new IllegalArgumentException(
+                    "destination and origin location cannot be the same.");
+        }
         this.delivery.setDestinationLocationCode(destinationLocationCode);
     }
 
     public void changeSender(String senderPhone) {
         this.senderPhone = senderPhone;
     }
-
 }

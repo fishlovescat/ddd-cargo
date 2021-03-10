@@ -14,7 +14,6 @@ public class CargoDeliveryUpdateCommand {
         this.cargoId = cargoId;
     }
 
-
     public String getDestinationLocationCode() {
         return destinationLocationCode;
     }
@@ -22,5 +21,4 @@ public class CargoDeliveryUpdateCommand {
     public void setDestinationLocationCode(String destinationLocationCode) {
         this.destinationLocationCode = destinationLocationCode;
     }
-
 }

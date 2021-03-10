@@ -1,15 +1,14 @@
 package com.deepoove.cargo.application.query.assembler;
 
-import java.util.function.Function;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.deepoove.cargo.application.query.dto.CargoDTO;
 import com.deepoove.cargo.infrastructure.db.dataobject.CargoDO;
 import com.deepoove.cargo.infrastructure.db.dataobject.LocationDO;
 import com.deepoove.cargo.infrastructure.db.mapper.LocationMapper;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.function.Function;
 
 @Component
 public class CargoDTOAssembler implements Function<CargoDO, CargoDTO> {
@@ -17,6 +16,7 @@ public class CargoDTOAssembler implements Function<CargoDO, CargoDTO> {
     @Autowired
     private LocationMapper locationMapper;
 
+    @Override
     public CargoDTO apply(CargoDO t) {
         CargoDTO target = new CargoDTO();
         BeanUtils.copyProperties(t, target);
@@ -26,5 +26,4 @@ public class CargoDTOAssembler implements Function<CargoDO, CargoDTO> {
         target.setDestinationLocationName(select.getName());
         return target;
     }
-
 }

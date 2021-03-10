@@ -6,7 +6,7 @@ import com.deepoove.cargo.application.command.cmd.CargoDeliveryUpdateCommand;
 import com.deepoove.cargo.application.command.cmd.CargoSenderUpdateCommand;
 
 public interface CargoCmdService {
-    
+
     void bookCargo(CargoBookCommand cargoBookCommand);
 
     void updateCargoDelivery(CargoDeliveryUpdateCommand cmd);
@@ -14,5 +14,4 @@ public interface CargoCmdService {
     void deleteCargo(CargoDeleteCommand cmd);
 
     void updateCargoSender(CargoSenderUpdateCommand cmd);
-
 }

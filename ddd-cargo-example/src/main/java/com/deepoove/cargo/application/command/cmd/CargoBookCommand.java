@@ -3,8 +3,11 @@ package com.deepoove.cargo.application.command.cmd;
 public class CargoBookCommand {
 
     private String senderPhone;
+
     private String description;
+
     private String originLocationCode;
+
     private String destinationLocationCode;
 
     public String getSenderPhone() {
@@ -38,5 +41,4 @@ public class CargoBookCommand {
     public void setDestinationLocationCode(String destinationLocationCode) {
         this.destinationLocationCode = destinationLocationCode;
     }
-
 }

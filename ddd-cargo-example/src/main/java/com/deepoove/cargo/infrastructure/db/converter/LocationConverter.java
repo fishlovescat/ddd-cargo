@@ -1,9 +1,8 @@
 package com.deepoove.cargo.infrastructure.db.converter;
 
-import org.springframework.beans.BeanUtils;
-
 import com.deepoove.cargo.domain.aggregate.location.Location;
 import com.deepoove.cargo.infrastructure.db.dataobject.LocationDO;
+import org.springframework.beans.BeanUtils;
 
 public class LocationConverter {
 
@@ -18,5 +17,4 @@ public class LocationConverter {
         BeanUtils.copyProperties(locationDO, target);
         return target;
     }
-
 }

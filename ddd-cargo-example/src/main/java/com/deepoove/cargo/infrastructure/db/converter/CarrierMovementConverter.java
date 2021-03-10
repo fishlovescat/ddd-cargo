@@ -1,9 +1,8 @@
 package com.deepoove.cargo.infrastructure.db.converter;
 
-import org.springframework.beans.BeanUtils;
-
 import com.deepoove.cargo.domain.aggregate.carriermovement.CarrierMovement;
 import com.deepoove.cargo.infrastructure.db.dataobject.CarrierMovementDO;
+import org.springframework.beans.BeanUtils;
 
 public class CarrierMovementConverter {
 
@@ -18,5 +17,4 @@ public class CarrierMovementConverter {
         BeanUtils.copyProperties(locationDO, target);
         return target;
     }
-
 }

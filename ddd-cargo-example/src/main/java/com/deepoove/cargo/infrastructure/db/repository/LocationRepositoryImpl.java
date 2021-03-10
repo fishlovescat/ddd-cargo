@@ -1,17 +1,16 @@
 package com.deepoove.cargo.infrastructure.db.repository;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.deepoove.cargo.domain.aggregate.location.Location;
 import com.deepoove.cargo.domain.aggregate.location.LocationRepository;
 import com.deepoove.cargo.infrastructure.db.converter.LocationConverter;
 import com.deepoove.cargo.infrastructure.db.dataobject.LocationDO;
 import com.deepoove.cargo.infrastructure.db.mapper.LocationMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
-public class LocationRepositoryImpl implements LocationRepository{
-    
+public class LocationRepositoryImpl implements LocationRepository {
+
     @Autowired
     private LocationMapper mapper;
 
@@ -20,5 +19,4 @@ public class LocationRepositoryImpl implements LocationRepository{
         LocationDO locationDO = mapper.select(code);
         return LocationConverter.deserialize(locationDO);
     }
-
 }

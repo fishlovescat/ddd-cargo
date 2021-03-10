@@ -1,15 +1,9 @@
 package com.deepoove.cargo.application.query.qry;
 
+import lombok.Data;
+
+@Data
 public class EventFindbyCargoQry {
 
     private String cargoId;
-
-    public String getCargoId() {
-        return cargoId;
-    }
-
-    public void setCargoId(String cargoId) {
-        this.cargoId = cargoId;
-    }
-
 }

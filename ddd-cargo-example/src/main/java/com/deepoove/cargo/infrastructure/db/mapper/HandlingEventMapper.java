@@ -1,11 +1,10 @@
 package com.deepoove.cargo.infrastructure.db.mapper;
 
-import java.util.List;
-
+import com.deepoove.cargo.infrastructure.db.dataobject.HandlingEventDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.deepoove.cargo.infrastructure.db.dataobject.HandlingEventDO;
+import java.util.List;
 
 @Mapper
 public interface HandlingEventMapper {
@@ -15,5 +14,4 @@ public interface HandlingEventMapper {
     List<HandlingEventDO> selectByScheduleId(@Param("scheduleId") String scheduleId);
 
     void save(HandlingEventDO handlingEventDO);
-
 }

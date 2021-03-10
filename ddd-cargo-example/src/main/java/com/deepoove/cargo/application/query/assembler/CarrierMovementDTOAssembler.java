@@ -1,18 +1,16 @@
 package com.deepoove.cargo.application.query.assembler;
 
-import java.text.SimpleDateFormat;
-import java.util.function.Function;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.deepoove.cargo.application.query.dto.CarrierMovementDTO;
 import com.deepoove.cargo.infrastructure.db.dataobject.CarrierMovementDO;
 import com.deepoove.cargo.infrastructure.db.mapper.LocationMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+import java.util.function.Function;
 
 @Component
-public class CarrierMovementDTOAssembler
-        implements Function<CarrierMovementDO, CarrierMovementDTO> {
+public class CarrierMovementDTOAssembler implements Function<CarrierMovementDO, CarrierMovementDTO> {
 
     @Autowired
     private LocationMapper locationMapper;
@@ -29,5 +27,4 @@ public class CarrierMovementDTOAssembler
         dto.setToLocationName(locationMapper.select(t.getToLocationId()).getName());
         return dto;
     }
-
 }

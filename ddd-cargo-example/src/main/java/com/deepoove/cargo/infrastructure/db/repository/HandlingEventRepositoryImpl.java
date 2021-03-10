@@ -1,16 +1,15 @@
 package com.deepoove.cargo.infrastructure.db.repository;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.deepoove.cargo.domain.aggregate.handlingevent.HandlingEvent;
 import com.deepoove.cargo.domain.aggregate.handlingevent.HandlingEventRepository;
 import com.deepoove.cargo.infrastructure.db.converter.HandlingEventConverter;
 import com.deepoove.cargo.infrastructure.db.dataobject.HandlingEventDO;
 import com.deepoove.cargo.infrastructure.db.mapper.HandlingEventMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class HandlingEventRepositoryImpl implements HandlingEventRepository {
@@ -39,5 +38,4 @@ public class HandlingEventRepositoryImpl implements HandlingEventRepository {
         HandlingEventDO handlingEventDO = HandlingEventConverter.serialize(handlingEvent);
         mapper.save(handlingEventDO);
     }
-
 }

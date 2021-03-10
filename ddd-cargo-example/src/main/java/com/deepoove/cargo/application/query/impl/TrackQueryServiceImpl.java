@@ -1,11 +1,5 @@
 package com.deepoove.cargo.application.query.impl;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.deepoove.cargo.application.query.TrackQueryService;
 import com.deepoove.cargo.application.query.assembler.CargoDTOAssembler;
 import com.deepoove.cargo.application.query.assembler.HandlingEventDTOAssembler;
@@ -17,6 +11,11 @@ import com.deepoove.cargo.infrastructure.db.dataobject.CargoDO;
 import com.deepoove.cargo.infrastructure.db.dataobject.HandlingEventDO;
 import com.deepoove.cargo.infrastructure.db.mapper.CargoMapper;
 import com.deepoove.cargo.infrastructure.db.mapper.HandlingEventMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TrackQueryServiceImpl implements TrackQueryService {
@@ -28,7 +27,8 @@ public class TrackQueryServiceImpl implements TrackQueryService {
     private CargoMapper cargoMapper;
 
     @Autowired
-    private CargoDTOAssembler converter;
+    private CargoDTOAssembler assembler;
+
     @Autowired
     private HandlingEventDTOAssembler handlingEventDTOAssembler;
 
@@ -38,9 +38,9 @@ public class TrackQueryServiceImpl implements TrackQueryService {
         CargoDO cargo = cargoMapper.select(qry.getCargoId());
         List<HandlingEventDO> events = handlingEventMapper.selectByCargo(qry.getCargoId());
 
-        // convertor
-        CargoDTO cargoDTO = converter.apply(cargo);
-        List<HandlingEventDTO> dtoEvents = events.stream().map(handlingEventDTOAssembler::apply)
+        // converter
+        CargoDTO cargoDTO = assembler.apply(cargo);
+        List<HandlingEventDTO> dtoEvents = events.stream().map(handlingEventDTOAssembler)
                 .collect(Collectors.toList());
 
         CargoHandlingEventDTO cargoHandlingEventDTO = new CargoHandlingEventDTO();
@@ -49,5 +49,4 @@ public class TrackQueryServiceImpl implements TrackQueryService {
 
         return cargoHandlingEventDTO;
     }
-
 }

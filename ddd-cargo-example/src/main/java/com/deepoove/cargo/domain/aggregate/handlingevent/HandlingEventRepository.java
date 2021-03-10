@@ -9,5 +9,4 @@ public interface HandlingEventRepository {
     List<HandlingEvent> findByScheduleId(String scheduleId);
 
     void save(HandlingEvent handlingEvent);
-
 }

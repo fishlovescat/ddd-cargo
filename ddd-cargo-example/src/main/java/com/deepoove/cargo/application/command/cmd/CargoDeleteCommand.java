@@ -11,5 +11,4 @@ public class CargoDeleteCommand {
     public void setCargoId(String cargoId) {
         this.cargoId = cargoId;
     }
-
 }

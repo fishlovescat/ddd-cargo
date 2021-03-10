@@ -11,5 +11,4 @@ public class CargoBookDomainEvent {
     public Cargo getCargo() {
         return cargo;
     }
-
 }

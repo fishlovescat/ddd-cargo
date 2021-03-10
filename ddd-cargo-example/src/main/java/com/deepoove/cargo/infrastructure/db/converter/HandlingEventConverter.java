@@ -22,5 +22,4 @@ public class HandlingEventConverter {
                 EventTypeEnum.of(locationDO.getEventType()), locationDO.getScheduleId());
         return target;
     }
-
 }

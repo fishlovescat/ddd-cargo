@@ -1,14 +1,13 @@
 package com.deepoove.cargo.infrastructure.db.repository;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.deepoove.cargo.domain.aggregate.cargo.Cargo;
 import com.deepoove.cargo.domain.aggregate.cargo.CargoRepository;
 import com.deepoove.cargo.domain.aggregate.cargo.valueobject.EnterpriseSegment;
 import com.deepoove.cargo.infrastructure.db.converter.CargoConverter;
 import com.deepoove.cargo.infrastructure.db.dataobject.CargoDO;
 import com.deepoove.cargo.infrastructure.db.mapper.CargoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class CargoRepositoryImpl implements CargoRepository {
@@ -19,13 +18,13 @@ public class CargoRepositoryImpl implements CargoRepository {
     @Override
     public Cargo find(String id) {
         CargoDO cargoDO = cargoMapper.select(id);
-        Cargo cargo = CargoConverter.deserialize(cargoDO);
+        Cargo cargo = new CargoConverter().deserialize(cargoDO);
         return cargo;
     }
 
     @Override
     public void save(Cargo cargo) {
-        CargoDO cargoDO = CargoConverter.serialize(cargo);
+        CargoDO cargoDO = new CargoConverter().serialize(cargo);
         CargoDO data = cargoMapper.select(cargoDO.getId());
         if (null == data) {
             cargoMapper.save(cargoDO);
@@ -49,5 +48,4 @@ public class CargoRepositoryImpl implements CargoRepository {
         // cargoMapper
         return 20;
     }
-
 }

@@ -1,13 +1,12 @@
 package com.deepoove.cargo.application.command.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.deepoove.cargo.application.command.IncidentLoggingCmdService;
 import com.deepoove.cargo.application.command.cmd.HandlingEventAddCommand;
 import com.deepoove.cargo.domain.aggregate.handlingevent.EventTypeEnum;
 import com.deepoove.cargo.domain.aggregate.handlingevent.HandlingEvent;
 import com.deepoove.cargo.domain.aggregate.handlingevent.HandlingEventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class IncidentLoggingCmdServiceImpl implements IncidentLoggingCmdService {
@@ -25,7 +24,5 @@ public class IncidentLoggingCmdServiceImpl implements IncidentLoggingCmdService 
 
         // save
         handlingEventRepository.save(handlingEvent);
-
     }
-
 }

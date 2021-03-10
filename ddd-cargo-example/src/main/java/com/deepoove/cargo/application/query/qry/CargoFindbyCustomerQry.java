@@ -1,15 +1,9 @@
 package com.deepoove.cargo.application.query.qry;
 
+import lombok.Data;
+
+@Data
 public class CargoFindbyCustomerQry {
 
     private String customerPhone;
-
-    public String getCustomerPhone() {
-        return customerPhone;
-    }
-
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
-    }
-
 }
